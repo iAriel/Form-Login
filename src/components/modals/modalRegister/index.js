@@ -1,12 +1,13 @@
 import {React, useState} from 'react'
 
-import {Modal, Form, Button, Col, Row, FloatingLabel} from 'react-bootstrap'
+import {Modal, Form, Button, Col, Row, FloatingLabel, InputGroup} from 'react-bootstrap'
 import ReCAPTCHA from "react-google-recaptcha";
 
 import styles from '../../../styles/components/modalRegister.module.css'
 import InputCpf from '../../inputMask/cpf/index'
 import InputDate from '../../inputMask/date/index'
-import ToastAlert from '../../alert/index'
+import ToastAlert from '../../alert/passwordToas/index'
+import ToastAge from '../../alert/ageToast/index'
 
 export default function ModalRegister(props){
 
@@ -15,7 +16,9 @@ export default function ModalRegister(props){
     const [password, setPassword] = useState('')
     const [passwordClone, setPasswordClone] = useState('')
     const [wrong, setWrong] = useState(false)
+    const [age, setAge] = useState(false)
     const [resume, setResume] = useState('')
+    const [dateB, setDataB] = useState('')
 
     function handleRegisterModal(){
         setShowRegister(true)
@@ -42,8 +45,28 @@ export default function ModalRegister(props){
           }
       }
 
+      function validateAge(){
+    
+        let nascimento = dateB.split("/");
+        let dataNascimento = new Date(parseInt(nascimento[2], 10),
+            parseInt(nascimento[1], 10) - 1,
+            parseInt(nascimento[0], 10));
+    
+        let diferenca = Date.now() -  dataNascimento.getTime();
+        let idade = new Date(diferenca);
+        let ageNumber = Math.abs(idade.getUTCFullYear() - 1970)
+
+        if(ageNumber < 18){
+            setAge(true)
+            setTimeout(() =>{
+                setAge(false)
+            }, 3000)
+        }
+      }
+
       function recivePassword(){
         validatePassword()
+        validateAge()
     }
 
     return(
@@ -88,6 +111,7 @@ export default function ModalRegister(props){
                                 </Form.Group>
                             </Row>
                                 {wrong && <ToastAlert/>}
+                                {age && <ToastAge />}
                             <Row className="mb-3">
                                 <Form.Group as={Col} controlId="formGridCPF">
                                         <Form.Label>CPF</Form.Label>
@@ -95,7 +119,7 @@ export default function ModalRegister(props){
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridDate">
                                     <Form.Label>Data de nascimento</Form.Label>
-                                    <InputDate />
+                                    <InputDate onChange={event => setDataB(event.target.value)}/>
                                 </Form.Group>
                             </Row>
                             <Row className="mb-3">
@@ -103,6 +127,7 @@ export default function ModalRegister(props){
                             </Row>
                                 <Form.Group as={Col} controlId="formGridSex">
                                         <Form.Select aria-label="Sexo">
+                                            <option value="1">Sexo</option>
                                             <option value="1">Masculino</option>
                                             <option value="2">Feminino</option>
                                             <option value="3">Outros</option>
@@ -111,7 +136,7 @@ export default function ModalRegister(props){
                             <Row>
                                 <Form.Label className={styles.labelResume}>
                                     <span>Resumo</span>
-                                    <span>{140 -resume.length}</span>
+                                    <span>{140 - resume.length}</span>
                                     </Form.Label>
                                 <FloatingLabel controlId="floatingTextarea2" >
                                     <Form.Control
@@ -121,6 +146,7 @@ export default function ModalRegister(props){
                                     onChange={event => setResume(event.target.value)}
                                     />
                                 </FloatingLabel>
+                                
                             </Row>
                         </Form>
                     </Modal.Body>

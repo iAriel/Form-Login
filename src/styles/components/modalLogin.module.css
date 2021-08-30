@@ -11,6 +11,10 @@
     box-shadow: none;
 }
 
+.goLogin{
+    width: 13rem;
+}
+
 .formSpace{
     background-color: #e7eaec;
     padding: 5rem 3rem 5rem 3rem;
@@ -41,11 +45,6 @@ label{
     padding: 2rem;
 }
 
-.goLogin{
-    background-color: #4392f1;
-    width: 13rem;
-}
-
 .enter{
     width: 10rem;
     background-color: #26a69a;
@@ -61,4 +60,28 @@ label{
 
 .goHome:Hover{
     background-color: rgb(136, 123, 4);
+}
+
+@media only screen and (max-width: 1590px){
+    .buttonContaier{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 460px){
+    .buttonContaier{
+        flex-direction: column;
+    }
+
+     .enter, .goHome{
+        width: 20rem;
+    }
+
+    .enter{
+        margin-bottom: 1rem;
+    }
+
+    .goLogin{
+        margin-bottom: 1rem;
+    }
 }
