@@ -1,0 +1,52 @@
+.registerContainer{
+    background-color: #e7eaec;
+    border-radius: 5px;
+}
+
+.registerContainer > h1{
+    font: 100 1.5rem 'Montserrat', Arial;
+    font-weight: lighter;
+}
+
+.registerModal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.registerModal{
+    font: 100 1.5rem 'Montserrat', Arial;
+}
+
+.goRegister{
+    background-color: #db7f67;
+    width: 13rem;
+}
+
+.labelResume{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.footerArea{
+    display: flex;
+    flex-direction: column;
+    background-color: #e7eaec;
+    justify-content: space-between; 
+}
+
+.buttonArea{
+    display: flex;
+    justify-content: space-around;
+
+    padding: 2rem 0 2rem 0;
+    width: 100%;
+    margin-right: 2rem;
+}
+
+#footer{
+    background-color: #e7eaec;
+}

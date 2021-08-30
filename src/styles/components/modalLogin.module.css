@@ -1,0 +1,64 @@
+.formArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: 100 1.5rem 'Montserrat', Arial;
+}
+
+.modalContainer{
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+}
+
+.formSpace{
+    background-color: #e7eaec;
+    padding: 5rem 3rem 5rem 3rem;
+    color: #141414;
+    width: 30rem;
+
+    box-shadow: 4px 3px 15px 0px #000000;
+
+    border-radius: 5px;
+}
+
+.formSpace > Form{
+    border-left: 3px solid #1C6EA4;
+    padding-left: 1rem;
+}
+
+input::placeholder{
+    color: #646262;
+}
+
+label{
+    color: #141414;
+}
+
+.buttonContaier{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.goLogin{
+    background-color: #4392f1;
+    width: 13rem;
+}
+
+.enter{
+    width: 10rem;
+    background-color: #26a69a;
+}
+
+.enter:hover{
+    background-color: #053a35;
+} 
+
+.goHome{
+    background-color: #e0ca00;
+}
+
+.goHome:Hover{
+    background-color: rgb(136, 123, 4);
+}
